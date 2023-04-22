@@ -1,14 +1,19 @@
 package com.codecademy.dinningReview.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
+@Entity
+@Table(name = "reviews")
+@Data
 public class Review {
-    //private List<Rating> ratingList = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
+
     private String author;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "restaurant_id")
