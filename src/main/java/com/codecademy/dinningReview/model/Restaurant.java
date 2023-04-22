@@ -18,5 +18,11 @@ private String cuisine;
 
 private String description;
 
+private Double averageScore;
 
+private Double peanutAllergyScore;
+
+private Double eggAllergyScore;
+
+private Double dairyAllergyScore;
 }
