@@ -29,6 +29,14 @@ public class UserController {
         throw new RuntimeException("Could not find any User with the given id...");
     }
 
+    @GetMapping("search")
+    public User findByName(@RequestParam(required = false)String name) {
+        var filteredList = this.userRepository.findByName(name).get();
+        return filteredList;
+
+
+    }
+
     @PutMapping("/users/{id}")
     public User updateUserById(@PathVariable Long id, @RequestBody User user) {
         var updatedUser = getUserById(id);
