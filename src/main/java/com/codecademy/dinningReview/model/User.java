@@ -11,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column(unique=true)
+    @Column(unique=true, updatable = false)
     private String name;
     private String city;
     private String state;
@@ -19,5 +19,21 @@ public class User {
     private Boolean interestedInPeanutAllergies;
     private Boolean interestedInEggAllergies;
     private Boolean interestedInDairyAllergies;
+
+    public void updateUser(User user) {
+        String city=user.getCity();
+        String state=user.getState();
+        String zipCode=user.getZipCode();
+        Boolean interestedInPeanutAllergies=user.getInterestedInPeanutAllergies();
+        Boolean interestedInEggAllergies=user.getInterestedInEggAllergies();
+        Boolean interestedInDairyAllergies=user.getInterestedInDairyAllergies();
+
+        this.city=city!=null ? city : this.city;
+        this.state=state!=null ? state : this.state;
+        this.zipCode=zipCode!=null ? zipCode : this.zipCode;
+        this.interestedInPeanutAllergies=interestedInPeanutAllergies!=null ? interestedInPeanutAllergies : this.interestedInPeanutAllergies;
+        this.interestedInEggAllergies=interestedInEggAllergies!=null ? interestedInEggAllergies : this.interestedInEggAllergies;
+        this.interestedInDairyAllergies=interestedInDairyAllergies!=null ? interestedInDairyAllergies : this.interestedInDairyAllergies;
+    }
 
 }
