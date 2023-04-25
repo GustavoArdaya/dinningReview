@@ -3,6 +3,8 @@ package com.codecademy.dinningReview.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "restaurants")
 @Data
@@ -25,4 +27,7 @@ private Double peanutAllergyScore;
 private Double eggAllergyScore;
 
 private Double dairyAllergyScore;
+@OneToMany(cascade = CascadeType.ALL)
+@JoinColumn(name = "reviews")
+private List<Review> restaurantReviews;
 }
