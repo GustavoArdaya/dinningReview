@@ -22,12 +22,14 @@ public class UserController {
         return this.userRepository.findAll();
     }
 
-    @GetMapping(("/users/{id}"))
-    public User getUserById(Long id) {
+    @GetMapping(("{id}"))
+    public User getUserById(@PathVariable Long id) {
         var user = this.userRepository.findById(id);
         if (user.isPresent()) return user.get();
         throw new RuntimeException("Could not find any User with the given id...");
     }
+
+
 
     @GetMapping("search")
     public User findByName(@RequestParam(required = false)String name) {
