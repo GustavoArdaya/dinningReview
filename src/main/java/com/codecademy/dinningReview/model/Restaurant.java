@@ -20,6 +20,12 @@ private String cuisine;
 
 private String description;
 
+private String city;
+
+private String state;
+
+private String zipCode;
+
 private Double averageScore;
 
 private Double peanutAllergyScore;
