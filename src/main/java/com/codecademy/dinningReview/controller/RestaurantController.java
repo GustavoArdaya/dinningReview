@@ -22,8 +22,13 @@ public class RestaurantController {
         return this.restaurantRepository.findAll();
     }
 
+    @GetMapping("{id}")
+    public Optional<Restaurant> getRestaurantById(@PathVariable Long id) {
+        return this.restaurantRepository.findById(id);
+    }
+
     @PostMapping()
-    public Restaurant createRestaurant(Restaurant restaurant) {
+    public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
         if(this.restaurantRepository.findByNameAndZipCodeAllIgnoreCase(restaurant.getName(), restaurant.getZipCode()).isEmpty()) {
             return this.restaurantRepository.save(restaurant);
         }
