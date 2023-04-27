@@ -32,8 +32,8 @@ public class UserController {
 
 
     @GetMapping("search")
-    public User findByName(@RequestParam(required = false)String name) {
-        var filteredList = this.userRepository.findByName(name).get();
+    public List<User> findByName(@RequestParam(required = false)String name) {
+        var filteredList = this.userRepository.findByNameContainingIgnoreCase(name);
         return filteredList;
 
 
