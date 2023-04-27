@@ -29,14 +29,10 @@ public class UserController {
         throw new RuntimeException("Could not find any User with the given id...");
     }
 
-
-
     @GetMapping("search")
     public List<User> findByName(@RequestParam(required = false)String name) {
         var filteredList = this.userRepository.findByNameContainingIgnoreCase(name);
         return filteredList;
-
-
     }
 
     @PutMapping("{id}")
