@@ -3,6 +3,7 @@ package com.codecademy.dinningReview.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,7 +34,9 @@ private Double peanutAllergyScore;
 private Double eggAllergyScore;
 
 private Double dairyAllergyScore;
-@OneToMany(cascade = CascadeType.ALL)
-@JoinColumn(name = "reviews")
+@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+@JoinColumn(name = "restaurant_id")
 private List<Review> restaurantReviews;
 }
+
+

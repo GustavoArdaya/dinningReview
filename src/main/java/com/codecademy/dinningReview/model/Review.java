@@ -14,7 +14,9 @@ public class Review {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
