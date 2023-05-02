@@ -6,21 +6,24 @@ import com.codecademy.dinningReview.model.User;
 import com.codecademy.dinningReview.repository.RestaurantRepository;
 import com.codecademy.dinningReview.repository.ReviewRepository;
 import com.codecademy.dinningReview.repository.UserRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class RestaurantService {
 
 private final RestaurantRepository restaurantRepository;
-private final UserRepository userRepository;
+private final AuthService authService;
 private final ReviewRepository reviewRepository;
 
-    public RestaurantService(RestaurantRepository restaurantRepository, UserRepository userRepository, ReviewRepository reviewRepository) {
+    public RestaurantService(RestaurantRepository restaurantRepository, UserRepository userRepository, AuthService authService, ReviewRepository reviewRepository) {
         this.restaurantRepository = restaurantRepository;
-        this.userRepository = userRepository;
+        this.authService = authService;
+
         this.reviewRepository = reviewRepository;
     }
 
@@ -44,11 +47,14 @@ private final ReviewRepository reviewRepository;
     }
 
     public Review createReview(@PathVariable Long restaurantId, @PathVariable Long userId, @RequestBody Review review) {
+        if (this.restaurantRepository.findById(restaurantId).isPresent()) {
         Restaurant restaurant = this.restaurantRepository.findById(restaurantId).get();
-        User user = this.userRepository.findById(userId).get();
+        User user = this.authService.getUser(userId);
         review.setAuthor(user);
         review.setRestaurant(restaurant);
         //restaurant.getRestaurantReviews().add(review);
         return reviewRepository.save(review);
+        }
+        throw new RuntimeException("Could not find restaurant");
     }
 }

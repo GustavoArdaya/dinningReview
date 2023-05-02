@@ -17,7 +17,7 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "author_id")
     private User author;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 

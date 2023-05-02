@@ -51,13 +51,10 @@ public class RestaurantController {
     }*/
 
     @PostMapping ("{restaurantId}/reviews/{userId}")
-    public Review createReview(@PathVariable Long restaurantId, @PathVariable Long userId, @RequestBody Review review) {
-        Restaurant restaurant = this.restaurantRepository.findById(restaurantId).get();
-        User user = this.userRepository.findById(userId).get();
-        review.setAuthor(user);
-        review.setRestaurant(restaurant);
-        //restaurant.getRestaurantReviews().add(review);
-        return reviewRepository.save(review);
+    public ResponseEntity<Review> createReview(@PathVariable Long restaurantId, @PathVariable Long userId, @RequestBody Review review) {
+
+        Review newReview = this.restaurantService.createReview(restaurantId, userId, review);
+        return ResponseEntity.ok(newReview);
     }
 
 }
