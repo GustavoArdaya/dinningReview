@@ -28,8 +28,12 @@ private final ReviewRepository reviewRepository;
         return this.restaurantRepository.findAll();
     }
 
-    public Optional<Restaurant> getRestaurantById(@PathVariable Long id) {
-        return this.restaurantRepository.findById(id);
+    public Restaurant getRestaurantById(@PathVariable Long id) {
+        Optional<Restaurant> restaurant = this.restaurantRepository.findById(id);
+        if(restaurant.isPresent()) {
+            return restaurant.get();
+        }
+        throw new RuntimeException("Could not find restaurant with given id");
     }
 
     public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {

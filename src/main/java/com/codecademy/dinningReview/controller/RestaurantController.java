@@ -31,8 +31,11 @@ public class RestaurantController {
     }
 
     @GetMapping("{id}")
-    public Optional<Restaurant> getRestaurantById(@PathVariable Long id) {
-        return this.restaurantRepository.findById(id);
+    public ResponseEntity<Restaurant> getRestaurantById(@PathVariable Long id) {
+        if (id == null) return ResponseEntity.badRequest().header("Id path variable must be present and valid").build();
+        Restaurant restaurant =this.restaurantService.getRestaurantById(id);
+        if (restaurant == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(restaurant);
     }
 
     @PostMapping()
