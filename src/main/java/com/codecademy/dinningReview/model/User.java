@@ -1,7 +1,10 @@
 package com.codecademy.dinningReview.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Table(name = "USERS")
@@ -19,6 +22,9 @@ public class User {
     private Boolean interestedInPeanutAllergies;
     private Boolean interestedInEggAllergies;
     private Boolean interestedInDairyAllergies;
+    @OneToMany(mappedBy = "author")
+    @JsonManagedReference
+    private List<Review> userReviews;
 
     public void updateUser(User user) {
         String city=user.getCity();
