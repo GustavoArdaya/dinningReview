@@ -45,8 +45,8 @@ public class RestaurantController {
     }
 
     /*@GetMapping("{restaurantId}/reviews")
-    public List<Review> getAllRestaurantReviews(@PathVariable Long restaurantId) {
-        Restaurant restaurant = this.restaurantRepository.findById(restaurantId).get();
+    public ResponseEntity<List<Review>> getAllRestaurantReviews(@PathVariable Long restaurantId) {
+        List<Review> = this.restaurantService.getAllRestaurantReviews(restaurantId).get();
         return restaurant.getRestaurantReviews();
     }*/
 

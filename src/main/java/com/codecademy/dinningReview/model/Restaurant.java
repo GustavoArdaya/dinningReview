@@ -1,5 +1,7 @@
 package com.codecademy.dinningReview.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -35,6 +37,9 @@ private Double eggAllergyScore;
 
 private Double dairyAllergyScore;
 
+@OneToMany(mappedBy = "restaurant")
+@JsonManagedReference
+private List<Review> reviews;
 }
 
 

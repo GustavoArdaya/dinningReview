@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -57,4 +58,10 @@ private final ReviewRepository reviewRepository;
         }
         throw new RuntimeException("Could not find restaurant");
     }
+
+    /*public List<Review> getAllRestaurantReviews(Long restaurantId) {
+        if (this.restaurantRepository.findById(restaurantId).isPresent()) {
+
+        }
+    }*/
 }
