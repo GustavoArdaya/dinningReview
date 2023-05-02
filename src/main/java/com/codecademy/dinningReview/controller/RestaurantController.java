@@ -39,11 +39,9 @@ public class RestaurantController {
     }
 
     @PostMapping()
-    public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
-        if (this.restaurantRepository.findByNameAndZipCodeAllIgnoreCase(restaurant.getName(), restaurant.getZipCode()).isEmpty()) {
-            return this.restaurantRepository.save(restaurant);
-        }
-        throw new RuntimeException("Restaurant with name " + restaurant.getName() + " and zip code " + restaurant.getZipCode() + " already exists");
+    public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
+        Restaurant newRestaurant = this.restaurantService.createRestaurant(restaurant);
+        return ResponseEntity.ok(newRestaurant);
     }
 
     /*@GetMapping("{restaurantId}/reviews")
