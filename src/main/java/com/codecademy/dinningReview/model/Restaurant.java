@@ -34,9 +34,7 @@ private Double peanutAllergyScore;
 private Double eggAllergyScore;
 
 private Double dairyAllergyScore;
-@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-@JoinColumn(name = "restaurant_id")
-private List<Review> restaurantReviews;
+
 }
 
 
