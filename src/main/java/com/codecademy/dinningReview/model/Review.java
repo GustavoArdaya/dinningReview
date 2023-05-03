@@ -30,4 +30,6 @@ public class Review {
     private Rating dairyRating;
 
     private String commentary;
+
+    private Boolean approved = false;
 }

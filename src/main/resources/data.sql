@@ -21,6 +21,6 @@ VALUES
 INSERT
 INTO
   reviews
-  (author_id, restaurant_id, dairy_rating, commentary)
+  (author_id, restaurant_id, dairy_rating, commentary, approved)
 VALUES
-  (1, 1, 3, 'Nice!');
+  (1, 1, 3, 'Nice!', false);
