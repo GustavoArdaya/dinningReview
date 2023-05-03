@@ -41,11 +41,15 @@ public class ReviewController {
     }
 
     @PutMapping("/pending/{id}")
-    public ResponseEntity<Review> approveReview(@PathVariable Long id) {
+    public ResponseEntity<Review> approveReviewById(@PathVariable Long id) {
         Review review = this.reviewService.ApproveReviewById(id);
         return ResponseEntity.ok(review);
+    }
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Review> deleteReviewById(@PathVariable Long id) {
+        Review review = this.reviewService.deleteReviewById(id);
+        return ResponseEntity.ok(review);
     }
 
 }

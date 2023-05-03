@@ -36,4 +36,10 @@ public class ReviewService {
         this.reviewRepository.save(review);
         return review;
     }
+
+    public Review deleteReviewById(Long id) {
+        Review review = this.getReviewById(id);
+        this.reviewRepository.deleteById(id);
+        return review;
+    }
 }
