@@ -50,6 +50,7 @@ public class ReviewController {
     public ResponseEntity<Review> deleteReviewById(@PathVariable Long id) {
         Review review = this.reviewService.deleteReviewById(id);
         return ResponseEntity.ok(review);
+
     }
 
 }
