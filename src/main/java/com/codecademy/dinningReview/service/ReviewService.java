@@ -32,7 +32,8 @@ public class ReviewService {
 
     public Review ApproveReviewById(Long id) {
         Review review = this.getReviewById(id);
-        review.setApproved(true);
+        review.setApproved(!review.getApproved());
+        this.reviewRepository.save(review);
         return review;
     }
 }
