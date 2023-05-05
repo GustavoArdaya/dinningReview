@@ -33,7 +33,6 @@ public class Review {
 
     private String commentary;
 
-    private Boolean approved = false;
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(255) default 'PENDING'")
     private ReviewStatus status = ReviewStatus.PENDING;

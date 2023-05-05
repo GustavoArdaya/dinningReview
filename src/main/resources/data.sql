@@ -21,12 +21,12 @@ VALUES
 INSERT
 INTO
   reviews
-  (author_id, restaurant_id, dairy_rating, commentary, approved)
+  (author_id, restaurant_id, dairy_rating, commentary)
 VALUES
-  (1, 1, 3, 'Nice!', false);
+  (1, 1, 3, 'Nice!');
 INSERT
 INTO
   reviews
-  (author_id, restaurant_id, peanut_rating, egg_rating, dairy_rating, commentary, status)
+  (author_id, restaurant_id, peanut_rating, egg_rating, dairy_rating, commentary)
 VALUES
-  (1, 1, 2, 4, 4, 'Second Comment', 'PENDING');
+  (1, 1, 2, 4, 4, 'Second Comment');
