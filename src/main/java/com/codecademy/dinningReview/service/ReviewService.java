@@ -31,12 +31,12 @@ public class ReviewService {
         return this.reviewRepository.findByStatusIs(ReviewStatus.PENDING);
     }
 
-//    public Review ChangeReviewStatusById(Long id, Review review) {
-//        Review updatedReview = this.getReviewById(id);
-//        review.setApproved(!review.getApproved());
-//        this.reviewRepository.save(review);
-//        return review;
-//    }
+    public Review ChangeReviewStatusById(Long id, Review review) {
+        Review updatedReview = this.getReviewById(id);
+        updatedReview.setStatus(review.getStatus());
+        this.reviewRepository.save(review);
+        return review;
+    }
 
     public Review deleteReviewById(Long id) {
         Review review = this.getReviewById(id);
