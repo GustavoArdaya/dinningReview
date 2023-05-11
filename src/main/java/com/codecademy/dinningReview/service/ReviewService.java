@@ -1,6 +1,7 @@
 package com.codecademy.dinningReview.service;
 
 import com.codecademy.dinningReview.model.Review;
+import com.codecademy.dinningReview.model.ReviewStatus;
 import com.codecademy.dinningReview.repository.ReviewRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,12 +28,12 @@ public class ReviewService {
     }
 
     public List<Review> getApprovalPendingReviews() {
-        return this.reviewRepository.findByApprovedFalse();
+        return this.reviewRepository.findByStatusIs(ReviewStatus.PENDING);
     }
 
-    public Review ApproveReviewById(Long id) {
-        Review review = this.getReviewById(id);
-        review.setApproved(!review.getApproved());
+    public Review ChangeReviewStatusById(Long id, Review review) {
+        Review updatedReview = this.getReviewById(id);
+        updatedReview.setStatus(review.getStatus());
         this.reviewRepository.save(review);
         return review;
     }

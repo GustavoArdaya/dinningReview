@@ -23,13 +23,17 @@ public class Review {
     @JoinColumn(name = "restaurant_id")
     @JsonBackReference
     private Restaurant restaurant;
-
+    @Enumerated(EnumType.ORDINAL)
     private Rating peanutRating;
+    @Enumerated(EnumType.ORDINAL)
     private Rating eggRating;
+    @Enumerated(EnumType.ORDINAL)
 
     private Rating dairyRating;
 
     private String commentary;
 
-    private Boolean approved = false;
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(255) default 'PENDING'")
+    private ReviewStatus status = ReviewStatus.PENDING;
 }
